@@ -3,42 +3,51 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f0f0f0;
-    font-family: Arial, sans-serif;
+    background-color: #2c3e50;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
 }
 
 .container {
     text-align: center;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #34495e;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    color: #ecf0f1;
+}
+
+h1 {
+    margin-bottom: 20px;
 }
 
 .password-display {
     margin-bottom: 20px;
     font-size: 1.2em;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color: #f9f9f9;
+    padding: 15px;
+    border: 2px solid #ecf0f1;
+    border-radius: 5px;
+    background-color: #ecf0f1;
+    color: #2c3e50;
+    word-break: break-all;
 }
 
 label {
     display: block;
     margin-bottom: 10px;
     font-size: 1em;
+    text-align: left;
 }
 
 input[type="number"] {
-    width: 50px;
+    width: 60px;
     padding: 5px;
     font-size: 1em;
     text-align: center;
     margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .checkboxes {
@@ -52,18 +61,22 @@ input[type="number"] {
     margin: 5px 0;
 }
 
+.button-container {
+    display: flex;
+    justify-content: space-around;
+}
+
 button {
     padding: 10px 20px;
     font-size: 1em;
     border: none;
-    border-radius: 4px;
-    background-color: #007bff;
+    border-radius: 5px;
+    background-color: #e74c3c;
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;
-    margin: 5px;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #c0392b;
 }
