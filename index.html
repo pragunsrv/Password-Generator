@@ -12,6 +12,14 @@
         <div class="password-display" id="password-display">Your password will appear here</div>
         <label for="length">Password Length:</label>
         <input type="number" id="length" min="1" max="128" value="12">
+        
+        <div class="checkboxes">
+            <label><input type="checkbox" id="uppercase" checked> Uppercase Letters</label>
+            <label><input type="checkbox" id="lowercase" checked> Lowercase Letters</label>
+            <label><input type="checkbox" id="numbers" checked> Numbers</label>
+            <label><input type="checkbox" id="special" checked> Special Characters</label>
+        </div>
+
         <button id="generate-btn">Generate Password</button>
     </div>
     <script src="script.js"></script>
