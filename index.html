@@ -35,10 +35,15 @@
         <label for="exclude-chars">Exclude Characters:</label>
         <input type="text" id="exclude-chars" placeholder="e.g. O, l, 0, 1">
         
+        <label for="password-count">Number of Passwords:</label>
+        <input type="number" id="password-count" min="1" value="1">
+
         <div class="button-container">
             <button id="generate-btn">Generate Password</button>
             <button id="copy-btn">Copy to Clipboard</button>
         </div>
+        
+        <ul class="password-list" id="password-list"></ul>
     </div>
     <script src="script.js"></script>
 </body>

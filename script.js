@@ -5,14 +5,23 @@ document.getElementById('generate-btn').addEventListener('click', function() {
     const numbersCount = document.getElementById('numbers-count').value;
     const specialCount = document.getElementById('special-count').value;
     const excludeChars = document.getElementById('exclude-chars').value;
-    const password = generatePassword(length, uppercaseCount, lowercaseCount, numbersCount, specialCount, excludeChars);
-    document.getElementById('password-display').textContent = password;
+    const passwordCount = document.getElementById('password-count').value;
+    
+    const passwordList = document.getElementById('password-list');
+    passwordList.innerHTML = '';
+
+    for (let i = 0; i < passwordCount; i++) {
+        const password = generatePassword(length, uppercaseCount, lowercaseCount, numbersCount, specialCount, excludeChars);
+        const listItem = document.createElement('li');
+        listItem.textContent = password;
+        passwordList.appendChild(listItem);
+    }
 });
 
 document.getElementById('copy-btn').addEventListener('click', function() {
-    const password = document.getElementById('password-display').textContent;
-    navigator.clipboard.writeText(password).then(function() {
-        alert('Password copied to clipboard!');
+    const passwordList = document.getElementById('password-list').innerText;
+    navigator.clipboard.writeText(passwordList).then(function() {
+        alert('Passwords copied to clipboard!');
     }, function(err) {
         console.error('Could not copy text: ', err);
     });
