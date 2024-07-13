@@ -4,7 +4,8 @@ document.getElementById('generate-btn').addEventListener('click', function() {
     const lowercaseCount = document.getElementById('lowercase-count').value;
     const numbersCount = document.getElementById('numbers-count').value;
     const specialCount = document.getElementById('special-count').value;
-    const password = generatePassword(length, uppercaseCount, lowercaseCount, numbersCount, specialCount);
+    const excludeChars = document.getElementById('exclude-chars').value;
+    const password = generatePassword(length, uppercaseCount, lowercaseCount, numbersCount, specialCount, excludeChars);
     document.getElementById('password-display').textContent = password;
 });
 
@@ -17,25 +18,34 @@ document.getElementById('copy-btn').addEventListener('click', function() {
     });
 });
 
-function generatePassword(length, uppercaseCount, lowercaseCount, numbersCount, specialCount) {
+function generatePassword(length, uppercaseCount, lowercaseCount, numbersCount, specialCount, excludeChars) {
     const uppercaseCharset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const lowercaseCharset = 'abcdefghijklmnopqrstuvwxyz';
     const numberCharset = '0123456789';
     const specialCharset = '!@#$%^&*()_+~`|}{[]:;?><,./-=';
     
+    let charset = '';
+    charset += filterCharacters(uppercaseCharset, excludeChars);
+    charset += filterCharacters(lowercaseCharset, excludeChars);
+    charset += filterCharacters(numberCharset, excludeChars);
+    charset += filterCharacters(specialCharset, excludeChars);
+
     let password = '';
-    password += getRandomCharacters(uppercaseCharset, uppercaseCount);
-    password += getRandomCharacters(lowercaseCharset, lowercaseCount);
-    password += getRandomCharacters(numberCharset, numbersCount);
-    password += getRandomCharacters(specialCharset, specialCount);
-    
+    password += getRandomCharacters(filterCharacters(uppercaseCharset, excludeChars), uppercaseCount);
+    password += getRandomCharacters(filterCharacters(lowercaseCharset, excludeChars), lowercaseCount);
+    password += getRandomCharacters(filterCharacters(numberCharset, excludeChars), numbersCount);
+    password += getRandomCharacters(filterCharacters(specialCharset, excludeChars), specialCount);
+
     if (password.length < length) {
         const remainingLength = length - password.length;
-        const allCharsets = uppercaseCharset + lowercaseCharset + numberCharset + specialCharset;
-        password += getRandomCharacters(allCharsets, remainingLength);
+        password += getRandomCharacters(charset, remainingLength);
     }
-    
+
     return shuffleString(password);
+}
+
+function filterCharacters(charset, excludeChars) {
+    return charset.split('').filter(char => !excludeChars.includes(char)).join('');
 }
 
 function getRandomCharacters(charset, count) {

@@ -39,7 +39,8 @@ label {
     text-align: left;
 }
 
-input[type="number"] {
+input[type="number"],
+input[type="text"] {
     width: 60px;
     padding: 5px;
     font-size: 1em;
@@ -48,6 +49,10 @@ input[type="number"] {
     border: none;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"] {
+    width: 200px;
 }
 
 .checkboxes {
