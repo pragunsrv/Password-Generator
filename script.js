@@ -14,12 +14,27 @@ document.getElementById('generate-btn').addEventListener('click', function() {
         const password = generatePassword(length, uppercaseCount, lowercaseCount, numbersCount, specialCount, excludeChars);
         const listItem = document.createElement('li');
         listItem.textContent = password;
+
+        const copyBtn = document.createElement('button');
+        copyBtn.textContent = 'Copy';
+        copyBtn.classList.add('copy-btn');
+        copyBtn.addEventListener('click', function() {
+            navigator.clipboard.writeText(password).then(function() {
+                alert('Password copied to clipboard!');
+            }, function(err) {
+                console.error('Could not copy text: ', err);
+            });
+        });
+
+        listItem.appendChild(copyBtn);
         passwordList.appendChild(listItem);
     }
 });
 
-document.getElementById('copy-btn').addEventListener('click', function() {
-    const passwordList = document.getElementById('password-list').innerText;
+document.getElementById('copy-all-btn').addEventListener('click', function() {
+    const passwordList = Array.from(document.getElementById('password-list').children)
+                             .map(item => item.textContent.replace('Copy', '').trim())
+                             .join('\n');
     navigator.clipboard.writeText(passwordList).then(function() {
         alert('Passwords copied to clipboard!');
     }, function(err) {

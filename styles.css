@@ -15,6 +15,8 @@ body {
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     color: #ecf0f1;
+    max-width: 400px;
+    width: 100%;
 }
 
 h1 {
@@ -37,6 +39,7 @@ label {
     margin-bottom: 10px;
     font-size: 1em;
     text-align: left;
+    color: #ecf0f1;
 }
 
 input[type="number"],
@@ -95,9 +98,14 @@ button:hover {
     padding: 0;
     margin-top: 20px;
     color: #ecf0f1;
+    max-height: 200px;
+    overflow-y: auto;
 }
 
 .password-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #ecf0f1;
     color: #2c3e50;
     margin: 5px 0;
@@ -105,4 +113,19 @@ button:hover {
     border-radius: 5px;
     word-break: break-all;
 }
-    
+
+.copy-btn {
+    margin-left: 10px;
+    padding: 5px 10px;
+    font-size: 0.8em;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.copy-btn:hover {
+    background-color: #2980b9;
+}
